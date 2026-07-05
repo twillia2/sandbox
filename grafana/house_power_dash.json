@@ -1,0 +1,2917 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "Ewfd2pxMk",
+    "namespace": "default",
+    "uid": "INC2LyNLjZIMUx2eHwC2ZXysDBKHUKGADNn7x39NrvQX",
+    "resourceVersion": "1763749230000021",
+    "generation": 13,
+    "creationTimestamp": "2022-10-17T18:20:31Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "2"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:u000000001",
+      "grafana.app/updatedBy": "user:u000000001",
+      "grafana.app/updatedTimestamp": "2025-11-21T18:20:32Z",
+      "grafana.app/folder": ""
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "grafana"
+            },
+            "spec": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            }
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true,
+          "legacyOptions": {
+            "type": "dashboard"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-14": {
+        "kind": "Panel",
+        "spec": {
+          "id": 14,
+          "title": "House Energy By Day",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "24h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "short",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.derivative"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "light-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.difference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-15": {
+        "kind": "Panel",
+        "spec": {
+          "id": 15,
+          "title": "House Energy By Hour",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "House Power (aggregated)",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [
+                    "mean",
+                    "lastNotNull",
+                    "sum"
+                  ],
+                  "displayMode": "table",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Outbuildings Power (aggregated)"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-blue",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.derivative"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "light-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.difference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-blue",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-16": {
+        "kind": "Panel",
+        "spec": {
+          "id": 16,
+          "title": "House",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "sum"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Total for period",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-17": {
+        "kind": "Panel",
+        "spec": {
+          "id": 17,
+          "title": "House",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Hourly Average",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-18": {
+        "kind": "Panel",
+        "spec": {
+          "id": 18,
+          "title": "House",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "24h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Daily Average",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-19": {
+        "kind": "Panel",
+        "spec": {
+          "id": 19,
+          "title": "Outbuildings Now",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "Outbuildings",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_power"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "gauge",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "watt",
+                  "max": 4000,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 1000,
+                        "color": "super-light-yellow"
+                      },
+                      {
+                        "value": 1500,
+                        "color": "light-orange"
+                      },
+                      {
+                        "value": 2000,
+                        "color": "dark-orange"
+                      },
+                      {
+                        "value": 3000,
+                        "color": "light-red"
+                      },
+                      {
+                        "value": 3500,
+                        "color": "dark-red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "Voltage (V)",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "Outbuildings",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "none"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_voltage"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "House",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "none"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_voltage"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [
+                    "mean",
+                    "lastNotNull",
+                    "max",
+                    "min"
+                  ],
+                  "displayMode": "table",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "volt",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 10,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-20": {
+        "kind": "Panel",
+        "spec": {
+          "id": 20,
+          "title": "Outbuildings Energy By Hour",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "Outbuildings Power (aggregated)",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [
+                    "mean",
+                    "lastNotNull",
+                    "sum"
+                  ],
+                  "displayMode": "table",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Site Power (aggregated)"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-blue",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.derivative"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "light-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.difference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-blue",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-21": {
+        "kind": "Panel",
+        "spec": {
+          "id": 21,
+          "title": "Outbuildings",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "sum"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Total for period",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-22": {
+        "kind": "Panel",
+        "spec": {
+          "id": 22,
+          "title": "Outbuildings Instantaneous Power (W)",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "Outbuildings",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_power"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "short",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 80,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-23": {
+        "kind": "Panel",
+        "spec": {
+          "id": 23,
+          "title": "Outbuildings",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Hourly Average",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "id": 24,
+          "title": "Outbuildings",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "24h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "Daily Average",
+                  "unit": "watth",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-25": {
+        "kind": "Panel",
+        "spec": {
+          "id": 25,
+          "title": "Outbuildings Energy By Day",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "24h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "short",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.derivative"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "light-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "house_power.difference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-purple",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-26": {
+        "kind": "Panel",
+        "spec": {
+          "id": 26,
+          "title": "House (cost)",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "alias": "Cost",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "house_power.difference"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "0.0002656"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      },
+                      "replaceFields": true
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "sum"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "currencyGBP",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "semi-dark-orange"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-27": {
+        "kind": "Panel",
+        "spec": {
+          "id": 27,
+          "title": "Outbuildings (cost)",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "1h"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "0_total"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            },
+                            {
+                              "params": [],
+                              "type": "difference"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "alias": "Cost",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "house_power.difference"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "0.0002656"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      },
+                      "replaceFields": true
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "sum"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "currencyGBP",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "semi-dark-orange"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "id": 3,
+          "title": "House Instantaneous Power (W)",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "House",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_power"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "watt",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 80,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "id": 6,
+          "title": "Voltage",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_voltage"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "vertical",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "volt",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 250,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-9": {
+        "kind": "Panel",
+        "spec": {
+          "id": 9,
+          "title": "House Now",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "influxdb",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "LLkQOEZRz"
+                      },
+                      "spec": {
+                        "alias": "Outbuildings",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "house_power",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "1_power"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "last"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "gauge",
+            "version": "12.2.0",
+            "spec": {
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "watt",
+                  "max": 4000,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 1000,
+                        "color": "super-light-yellow"
+                      },
+                      {
+                        "value": 1500,
+                        "color": "light-orange"
+                      },
+                      {
+                        "value": 2000,
+                        "color": "dark-orange"
+                      },
+                      {
+                        "value": 3000,
+                        "color": "light-red"
+                      },
+                      {
+                        "value": 3500,
+                        "color": "dark-red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 4,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-9"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 4,
+              "y": 0,
+              "width": 8,
+              "height": 5,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 0,
+              "width": 4,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-19"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 0,
+              "width": 8,
+              "height": 5,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-22"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 4,
+              "y": 5,
+              "width": 8,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-15"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 5,
+              "width": 8,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-20"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 6,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-16"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 6,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-21"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 10,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-26"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 10,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-27"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 4,
+              "y": 12,
+              "width": 8,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-14"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 12,
+              "width": 8,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-25"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 14,
+              "width": 2,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-17"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 2,
+              "y": 14,
+              "width": 2,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-18"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 14,
+              "width": 2,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-23"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 14,
+              "y": 14,
+              "width": 2,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-24"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 18,
+              "width": 4,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-6"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 4,
+              "y": 18,
+              "width": 20,
+              "height": 6,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "from": "now-24h",
+      "to": "now",
+      "autoRefresh": "5s",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "House Power",
+    "variables": []
+  }
+}

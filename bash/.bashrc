@@ -18,4 +18,4 @@ source ~/src/gitstatus/gitstatus.prompt.sh
 
 # https://github.com/trapd00r/LS_COLORS
 PS1="\t [${GREEN}\u@\h${RESET} ${BLUE}\w${RESET}]\${GITSTATUS_PROMPT}\$ "
-. /usr/share/LS_COLORS/dircolors.sh
+. ~/src/LS_COLORS/lscolors.sh
