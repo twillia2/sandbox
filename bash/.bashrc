@@ -19,3 +19,9 @@ source ~/src/gitstatus/gitstatus.prompt.sh
 # https://github.com/trapd00r/LS_COLORS
 PS1="\t [${GREEN}\u@\h${RESET} ${BLUE}\w${RESET}]\${GITSTATUS_PROMPT}\$ "
 . ~/src/LS_COLORS/lscolors.sh
+
+### macOS
+if [ -x /opt/homebrew/bin/brew ]; then
+    PATH=/opt/homebrew/bin:$PATH
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
